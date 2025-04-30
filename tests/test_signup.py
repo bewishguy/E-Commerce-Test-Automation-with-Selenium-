@@ -4,8 +4,8 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 
-# 💥 Import ข้อมูลจากไฟล์ testdata_signup.py
-from test_data.testdata_signup import signup_data
+# Import ข้อมูลจากไฟล์ testdata_signup.py
+from test_data.testdata_generator import generate_signup_data
 
 def test_signup_success():
     service = Service(ChromeDriverManager().install())
@@ -64,5 +64,6 @@ def test_signup_success():
     # เช็คว่าแสดงข้อความ 'Account Created!'
     assert "Account Created!" in driver.page_source
 
+    signup_data = generate_signup_data()
 
     driver.quit()

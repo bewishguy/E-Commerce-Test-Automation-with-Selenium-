@@ -1,14 +1,14 @@
-# pages/login_page.py
-from selenium.webdriver.common.by import By
+# tests/test_login.py
+import pytest
+from pages.login_page import LoginPage
+from testdata_generator import generate_login_data
 
-class LoginPage:
-    def __init__(self, driver):
-        self.driver = driver
-        self.email_input = (By.NAME, "email")
-        self.password_input = (By.NAME, "password")
-        self.login_button = (By.XPATH, "//button[contains(text(), 'Login')]")
+@pytest.mark.parametrize("case", test_cases)
+def test_login(driver, case):
+    page = LoginPage(driver)
+    page.login(case["email"], case["password"])
 
-    def login(self, email, password):
-        self.driver.find_element(*self.email_input).send_keys(email)
-        self.driver.find_element(*self.password_input).send_keys(password)
-        self.driver.find_element(*self.login_button).click()
+    if case["id"] == "TC03":
+        assert "Home" in driver.title  # หรือเช็ค URL/text เฉพาะ
+    else:
+        assert case["expected"] in driver.page_source
