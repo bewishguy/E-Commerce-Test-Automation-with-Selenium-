@@ -5,7 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 # 💥 Import ข้อมูลจากไฟล์ testdata_signup.py
-from tests.testdata_signup import signup_data
+from test_data.testdata_signup import signup_data
 
 def test_signup_success():
     service = Service(ChromeDriverManager().install())
