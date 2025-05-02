@@ -1,4 +1,3 @@
-# conftest.py
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -8,7 +7,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 def driver():
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service)
-    driver.get("https://automationexercise.com/login")
     driver.maximize_window()
     yield driver
     driver.quit()
