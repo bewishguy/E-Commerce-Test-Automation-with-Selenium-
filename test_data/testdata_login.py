@@ -1,34 +1,33 @@
 from faker import Faker
-import random
 
 faker = Faker()
 
-def generate_valid_login_data():
+def get_valid_login_data():
     return {
-        "email": "testuser@example.com",
-        "password": "CorrectPass123"
+        "email": "bewishguy@gmail.com",  
+        "password": "gtestpassword"
     }
 
-def generate_invalid_email_data():
+def get_invalid_email_login_data():
     return {
-        "email": faker.unique.email(),  # อีเมลที่ไม่ตรงกับระบบ
-        "password": "CorrectPass123"
+        "email": "invalid_user@example.com",
+        "password": faker.password()
     }
 
-def generate_wrong_password_data():
+def get_wrong_password_data():
     return {
-        "email": "testuser@example.com",
-        "password": faker.password(length=10)  # รหัสผ่านสุ่ม
+        "email": "validuser@example.com",
+        "password": faker.password()
     }
 
-def generate_empty_fields_data():
+def get_empty_data():
     return {
         "email": "",
         "password": ""
     }
 
-def generate_invalid_email_format_data():
+def get_wrong_format_email_data():
     return {
-        "email": "invalid-email-format",  # ไม่ถูกต้องตาม format
-        "password": "CorrectPass123"
+        "email": "user123", # wrongemailformat
+        "password": "gtestpassword"
     }

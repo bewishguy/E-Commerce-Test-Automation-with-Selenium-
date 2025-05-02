@@ -12,7 +12,7 @@ def test_signup(driver):
     email = data["email"]
     password = data["password"]
 
-    # ----------- Case 1: Successful Signup -----------
+    # Case 1: Successful Signup 
     driver.get("https://automationexercise.com/signup")
 
     page = SignupPage(driver)
@@ -42,7 +42,7 @@ def test_signup(driver):
 
     assert "Account Created!" in driver.page_source
 
-    # ----------- Case 2: Re-register with existing email -----------
+    # Case 2: Re-register with existing email 
     driver.get("https://automationexercise.com/signup")
     page.enter_name(name)
     page.enter_email(email)  # Use same email again

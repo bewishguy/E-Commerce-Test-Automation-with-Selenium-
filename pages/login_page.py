@@ -4,7 +4,11 @@ class LoginPage:
     def __init__(self, driver):
         self.driver = driver
 
-    def login(self, email, password):
+    def enter_email(self, email):
         self.driver.find_element(By.NAME, "email").send_keys(email)
+
+    def enter_password(self, password):
         self.driver.find_element(By.NAME, "password").send_keys(password)
-        self.driver.find_element(By.XPATH, "//button[text()='Login']").click()
+
+    def click_login(self):
+        self.driver.find_element(By.XPATH, "//button[@data-qa='login-button']").click()
