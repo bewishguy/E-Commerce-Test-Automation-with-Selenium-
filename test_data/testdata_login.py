@@ -1,28 +1,34 @@
-# test_data/testdata_login.py
-def get_login_test_cases():
-    return [
-        {
-            "id": "TC01",
-            "email": "",
-            "password": "",
-            "expected": "Email Address or Password incorrect"
-        },
-        {
-            "id": "TC02",
-            "email": "fakeemail@example.com",
-            "password": "wrongpass",
-            "expected": "Email Address or Password incorrect"
-        },
-        {
-            "id": "TC03",  # ถูกต้อง
-            "email": "your_registered_email@example.com",
-            "password": "your_correct_password",
-            "expected": "Logged in as"
-        },
-        {
-            "id": "TC04",
-            "email": "invalidemail.com",
-            "password": "password",
-            "expected": "Email Address or Password incorrect"
-        },
-    ]
+from faker import Faker
+import random
+
+faker = Faker()
+
+def generate_valid_login_data():
+    return {
+        "email": "testuser@example.com",
+        "password": "CorrectPass123"
+    }
+
+def generate_invalid_email_data():
+    return {
+        "email": faker.unique.email(),  # อีเมลที่ไม่ตรงกับระบบ
+        "password": "CorrectPass123"
+    }
+
+def generate_wrong_password_data():
+    return {
+        "email": "testuser@example.com",
+        "password": faker.password(length=10)  # รหัสผ่านสุ่ม
+    }
+
+def generate_empty_fields_data():
+    return {
+        "email": "",
+        "password": ""
+    }
+
+def generate_invalid_email_format_data():
+    return {
+        "email": "invalid-email-format",  # ไม่ถูกต้องตาม format
+        "password": "CorrectPass123"
+    }

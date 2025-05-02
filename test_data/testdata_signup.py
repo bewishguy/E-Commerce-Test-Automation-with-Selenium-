@@ -18,19 +18,3 @@ def generate_signup_data():
     "zipcode": faker.postcode(),  # รหัสไปรษณีย์
     "mobile": faker.phone_number()  # เบอร์โทร}
     }
-
-    # return {
-    #     "name" = data(["name"]),
-    #     "email" = data(["email"]),
-    #     "password": faker.password(length=10),
-    #     "title": random.choice(["Mr", "Mrs"]),
-    #     "day": str(random.randint(1, 28)),
-    #     "month": random.choice(["January", "February", "March", "April", "May", "June",
-    #                             "July", "August", "September", "October", "November", "December"]),
-    #     "year": str(random.randint(1970, 2000)),
-    #     "address": faker.street_address(),
-    #     "city": faker.city(),
-    #     "country": random.choice(["India", "United States", "Canada", "Australia", "Israel", "New Zealand", "Singapore" ]),
-    #     "zipcode": faker.postcode(),
-    #     "mobile": faker.phone_number()
-    # }
