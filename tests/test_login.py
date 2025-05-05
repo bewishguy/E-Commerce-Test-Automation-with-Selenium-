@@ -10,11 +10,11 @@ from test_data.testdata_login import (
 )
 
 @pytest.mark.parametrize("data,expected_text", [
-    (get_valid_login_data(), "Logged in as"),                      # TC03
+    (get_valid_login_data(), "Logged in as"),                                  # TC03
     (get_invalid_email_login_data(), "Your email or password is incorrect!"),  # TC04
     (get_wrong_password_data(), "Your email or password is incorrect!"),       # TC05
-    (get_empty_data(), " "),                # TC06
-    (get_wrong_format_email_data(), "")    # TC07
+    (get_empty_data(), " "),                                                   # TC06
+    (get_wrong_format_email_data(), "")                                        # TC07
     
 ])
 

@@ -1,8 +1,11 @@
 import pytest
 from selenium import webdriver
 from pages.products_page import ProductsPage
+from selenium.webdriver.common.by import By
 from test_data.testdata_products import expected_min_products
 from pages.product_detail_page import ProductDetailPage
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def driver():
@@ -56,3 +59,83 @@ def test_TC10_click_view_product_goes_to_detail_page(driver):
 
     assert product_name is not None and product_name.strip() != "", "Product name not found on detail page"
     print(f"Product detail page loaded with name: {product_name}")
+
+def test_TC11_search_existing_product(driver):
+    products_page = ProductsPage(driver)
+    products_page.go_to_products_page()
+
+    search_keyword = "top"
+    products_page.search_product(search_keyword)
+
+    result_names = products_page.get_search_results_names()
+    assert len(result_names) > 0, f"No results found for keyword '{search_keyword}'"
+
+    for i, name_element in enumerate(result_names):
+        print(f"[{i}] {name_element.text}")
+    match_count = 0
+    for name_element in result_names:
+        if search_keyword.lower() in name_element.text.lower():
+            match_count += 1
+
+    assert match_count > 0, f"No matching items found that include the keyword '{search_keyword}'"
+
+def test_TC12_search_non_existing_product(driver):
+    products_page = ProductsPage(driver)
+    products_page.go_to_products_page()
+
+    search_keyword = "invalidproduct"
+    products_page.search_product(search_keyword)
+
+    result_names = products_page.get_search_results_names()
+    assert len(result_names) == 0, f"Expected no results, but found {len(result_names)} products"
+
+def test_TC13_filter_by_category_women_tops(driver):
+    products_page = ProductsPage(driver)
+    products_page.go_to_products_page()
+
+    products_page.click_category_women_tops()
+    result_names = products_page.get_category_products_names()
+
+    assert len(result_names) > 0, "No products found under Women > Tops category"
+
+    for i, name_element in enumerate(result_names):
+        print(f"[{i}] {name_element.text}")
+
+def test_TC14_add_to_cart_shows_popup(driver):
+    products_page = ProductsPage(driver)
+    products_page.go_to_products_page()
+
+    products_page.hover_and_add_first_product_to_cart()
+
+    assert products_page.is_add_to_cart_modal_visible(), "Add to cart modal did not appear"
+
+    products_page.close_cart_modal()
+
+def test_TC09_search_within_category(driver):
+    products_page = ProductsPage(driver)
+    products_page.go_to_products_page()
+
+    # 1. เลือกหมวดหมู่ Women > Tops
+    products_page.click_category_women_tops()
+
+    # 2. รอให้สินค้าภายใต้หมวดหมู่แสดงผล
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_element_located((By.CLASS_NAME, "productinfo"))
+    )
+
+    # 3. ทำการค้นหาคำว่า "top"
+    search_keyword = "top"
+    products_page.search_product(search_keyword)
+
+    # 4. รอให้ผลลัพธ์การค้นหาแสดงขึ้น
+    WebDriverWait(driver, 10).until(
+        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".productinfo.text-center p"))
+    )
+
+    # 5. ตรวจสอบผลลัพธ์การค้นหา
+    results = products_page.get_search_results_names()
+    assert len(results) > 0, "Expected results, but found none"
+
+    for i, el in enumerate(results):
+        print(f"[{i}] {el.text}")
+        assert search_keyword.lower() in el.text.lower(), f"Keyword '{search_keyword}' not in result #{i}: '{el.text}'"
