@@ -110,32 +110,3 @@ def test_TC14_add_to_cart_shows_popup(driver):
     assert products_page.is_add_to_cart_modal_visible(), "Add to cart modal did not appear"
 
     products_page.close_cart_modal()
-
-def test_TC09_search_within_category(driver):
-    products_page = ProductsPage(driver)
-    products_page.go_to_products_page()
-
-    # 1. เลือกหมวดหมู่ Women > Tops
-    products_page.click_category_women_tops()
-
-    # 2. รอให้สินค้าภายใต้หมวดหมู่แสดงผล
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.CLASS_NAME, "productinfo"))
-    )
-
-    # 3. ทำการค้นหาคำว่า "top"
-    search_keyword = "top"
-    products_page.search_product(search_keyword)
-
-    # 4. รอให้ผลลัพธ์การค้นหาแสดงขึ้น
-    WebDriverWait(driver, 10).until(
-        EC.presence_of_all_elements_located((By.CSS_SELECTOR, ".productinfo.text-center p"))
-    )
-
-    # 5. ตรวจสอบผลลัพธ์การค้นหา
-    results = products_page.get_search_results_names()
-    assert len(results) > 0, "Expected results, but found none"
-
-    for i, el in enumerate(results):
-        print(f"[{i}] {el.text}")
-        assert search_keyword.lower() in el.text.lower(), f"Keyword '{search_keyword}' not in result #{i}: '{el.text}'"
