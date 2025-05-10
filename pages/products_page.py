@@ -7,7 +7,7 @@ import time
 class ProductsPage:
     def __init__(self, driver):
         self.driver = driver
-    #TC01
+    #TC08
     products_button = (By.XPATH, "//a[@href='/products']")
     product_items = (By.CSS_SELECTOR, ".features_items .product-image-wrapper")
 
@@ -17,7 +17,7 @@ class ProductsPage:
     def get_all_products(self):
         return self.driver.find_elements(*self.product_items)
     
-    #TC02
+    #TC09
     product_names = (By.CSS_SELECTOR, ".productinfo.text-center p")
     product_prices = (By.CSS_SELECTOR, ".productinfo.text-center h2")
     add_to_cart_buttons = (By.CSS_SELECTOR, ".product-overlay .add-to-cart")
@@ -42,14 +42,14 @@ class ProductsPage:
     def get_add_to_cart_overlay_buttons(self):
         return self.driver.find_elements(*self.add_to_cart_overlay_buttons)
     
-    #TC03
+    #TC10
     view_product_buttons = (By.XPATH, "//a[text()='View Product']")
 
     def click_view_product_by_index(self, index=0):
         buttons = self.driver.find_elements(*self.view_product_buttons)
         buttons[index].click()
 
-    #TC04
+    #TC11
     search_input = (By.ID, "search_product")
     search_button = (By.ID, "submit_search")
     searched_products = (By.CSS_SELECTOR, ".features_items .productinfo.text-center p")
@@ -61,7 +61,7 @@ class ProductsPage:
     def get_search_results_names(self):
         return self.driver.find_elements(*self.searched_products)
     
-    # TC06
+    # TC12
     women_tops_category = (By.XPATH, "//a[@href='#Women']")
     women_tops_subcategory = (By.XPATH, "//a[text()='Tops ']")
 
@@ -76,7 +76,7 @@ class ProductsPage:
     def get_category_products_names(self):
         return self.driver.find_elements(*self.category_products)
     
-    # TC07
+    # TC13
     add_to_cart_buttons = (By.XPATH, "//div[@class='product-overlay']//a[contains(text(),'Add to cart')]")
     product_boxes = (By.CLASS_NAME, "product-image-wrapper")
 
@@ -103,7 +103,7 @@ class ProductsPage:
     def close_cart_modal(self):
         self.driver.find_element(*self.continue_btn).click()
     
-    #TC08
+    #TC14
     def get_current_product_names(self):
         elements = self.driver.find_elements(By.CSS_SELECTOR, ".productinfo.text-center p")
         return [el.text.strip() for el in elements]
@@ -119,7 +119,7 @@ class ProductsPage:
                 return
         raise Exception("Next page button (›) not found")
     
-    #TC9
+    #TC15
     def click_category_women_tops(self):
         women_category = self.driver.find_element(By.XPATH, "//a[@href='#Women']")
         women_category.click()
@@ -137,4 +137,13 @@ class ProductsPage:
     def get_search_results_names(self):
         return self.driver.find_elements(By.CSS_SELECTOR, ".productinfo.text-center p")
 
+    #TC23
+    def add_first_product_to_cart(self):
+            add_button = self.driver.find_element(By.XPATH, "(//a[@class='btn btn-default add-to-cart'])[1]")
+            add_button.click()
 
+            # รอป๊อปอัปแสดงแล้วคลิก "View Cart"
+            WebDriverWait(self.driver, 10).until(
+                EC.visibility_of_element_located((By.XPATH, "//div[@class='modal-content']"))
+            )
+            self.driver.find_element(By.XPATH, "//u[text()='View Cart']").click()

@@ -10,7 +10,7 @@ def driver():
     yield driver
     driver.quit()
 
-def test_TC01_submit_valid_form(driver):
+def test_TC15_submit_valid_form(driver):
     page = ContactUsPage(driver)
     page.open()
     page.fill_name(data.valid_contact_data["name"])
@@ -21,7 +21,7 @@ def test_TC01_submit_valid_form(driver):
     page.click_submit()
     assert "Success! Your details have been submitted successfully." in page.get_success_message()
 
-def test_TC02_missing_name(driver):
+def test_TC16_missing_name(driver):
     page = ContactUsPage(driver)
     page.open()
     # Skip name
@@ -34,7 +34,7 @@ def test_TC02_missing_name(driver):
     
     assert "Success! Your details have been submitted successfully." in driver.page_source
 
-def test_TC03_missing_email(driver):
+def test_TC17_missing_email(driver):
     page = ContactUsPage(driver)
     page.open()
     page.fill_name(data.missing_email_data["name"])
@@ -48,7 +48,7 @@ def test_TC03_missing_email(driver):
 
     assert driver.current_url == current_url_before
 
-def test_TC04_invalid_email(driver):
+def test_TC18_invalid_email(driver):
     page = ContactUsPage(driver)
     page.open()
     page.fill_name(data.invalid_email_data["name"])
@@ -59,7 +59,7 @@ def test_TC04_invalid_email(driver):
     page.click_submit()
     assert "email" in driver.page_source.lower() or "invalid" in driver.page_source.lower()
 
-def test_TC05_missing_subject(driver):
+def test_TC19_missing_subject(driver):
     page = ContactUsPage(driver)
     page.open()
     page.fill_name(data.missing_subject_data["name"])
@@ -70,7 +70,7 @@ def test_TC05_missing_subject(driver):
     page.click_submit()
     assert "Subject" in driver.page_source or "required" in driver.page_source
 
-def test_TC06_missing_message(driver):
+def test_TC20_missing_message(driver):
     page = ContactUsPage(driver)
     page.open()
     page.fill_name(data.missing_message_data["name"])
