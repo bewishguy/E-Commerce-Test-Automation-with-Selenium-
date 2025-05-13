@@ -6,7 +6,7 @@ from selenium.common.exceptions import NoSuchElementException
 class CheckoutPage:
     def __init__(self, driver):
         self.driver = driver
-        self.wait   = WebDriverWait(driver, 10)
+        self.wait   = WebDriverWait(driver, 20)
 
     # ── TC02
     def is_product_summary_displayed(self) -> bool:
@@ -41,8 +41,18 @@ class CheckoutPage:
             return False
         
     # ── TC05   
-    # def get_billing_address_text(self):
-    #     return self.driver.find_element("xpath", "//ul[@id='address_invoice']").text
+    def get_billing_address_text(self):
+        print("🔍 Waiting for billing address...")
+        billing_element = self.wait.until(
+            EC.visibility_of_element_located((By.ID, "address_invoice"))
+        )
+        print("✅ Billing element is visible.")
+        return billing_element.text.strip()
 
-    # def get_delivery_address_text(self):
-    #     return self.driver.find_element("xpath", "//ul[@id='address_delivery']").text
+    def get_delivery_address_text(self):
+        print("🔍 Waiting for delivery address...")
+        delivery_element = self.wait.until(
+            EC.visibility_of_element_located((By.ID, "address_delivery"))
+        )
+        print("✅ Delivery element is visible.")
+        return delivery_element.text.strip()
