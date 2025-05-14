@@ -114,10 +114,10 @@ class ProductsPage:
         )
         for link in pagination_links:
             print("Pagination link:", link.text.strip())
-            if link.text.strip() == '›':
+            if link.text.strip() == '>':
                 link.click()
                 return
-        raise Exception("Next page button (›) not found")
+        raise Exception("Next page button (>) not found")
     
     #TC15
     def click_category_women_tops(self):
@@ -136,14 +136,3 @@ class ProductsPage:
 
     def get_search_results_names(self):
         return self.driver.find_elements(By.CSS_SELECTOR, ".productinfo.text-center p")
-
-    #TC23
-    def add_first_product_to_cart(self):
-            add_button = self.driver.find_element(By.XPATH, "(//a[@class='btn btn-default add-to-cart'])[1]")
-            add_button.click()
-
-            # รอป๊อปอัปแสดงแล้วคลิก "View Cart"
-            WebDriverWait(self.driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, "//div[@class='modal-content']"))
-            )
-            self.driver.find_element(By.XPATH, "//u[text()='View Cart']").click()

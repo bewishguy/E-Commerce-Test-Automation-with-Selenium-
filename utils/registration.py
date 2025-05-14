@@ -1,4 +1,3 @@
-# import time
 from faker import Faker
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait, Select
