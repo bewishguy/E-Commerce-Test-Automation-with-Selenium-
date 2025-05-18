@@ -1,71 +1,76 @@
-E-Commerce Test Automation Project with Selenium & Python
+# E-Commerce Test Automation Project (AutomationExercise.com)
 
-This project demonstrates end-to-end automation testing for the e-commerce website AutomationExercise using Selenium, Python, and Pytest.
+This project demonstrates end-to-end test automation of an e-commerce website using **Selenium**, **Python**, and **Pytest**, following clean code principles and best practices.
 
-▶️ Project Highlights
+## Project Highlights
 
-  •  Automated test scenarios for Signup, Login, Checkout, and other key user flows.
+  -  Automated test scenarios for Signup, Login, Checkout, and other key user flows.
   
-  •  Follows Page Object Model (POM) for maintainable and reusable test code.
+  -  Follows Page Object Model (POM) for maintainable and reusable test code.
   
-  •  Implements data-driven testing using Faker for random but realistic test data.
+  -  Implements data-driven testing using Faker for random but realistic test data.
   
-  •  Clean code structure: separation of test data, page objects, and test scripts.
+  -  Clean code structure: separation of test data, page objects, and test scripts.
 
-▶️ Test Coverage
+## Test Coverage
+
+- **Data-Driven Testing** using Faker to generate random, realistic test data.
+- **Page Object Model (POM)** used to organize test structure clearly and maintainably.
+  
 This project covers key user flows of the e-commerce website, including:
 
-➊ Signup & Account Creation
+**Signup & Account Creation**
 
-  • Registering a new user with complete personal and address details
+- Registering a new user with complete personal and address details
   
-  • Handling duplicate email validation
+- Handling duplicate email validation
 
-➋ Login
+**Login**
 
-  • Logging in with correct and incorrect credentials
+- Logging in with correct and incorrect credentials
 
-  • Validating input formats and required fields
+- Validating input formats and required fields
 
-➌ Product Interaction
+**Product Interaction**
 
-  • Adding products to cart from the homepage
+- Adding products to cart from the homepage
 
-  • Viewing the cart and verifying product details
+- Viewing the cart and verifying product details
 
-➍ Contact Us
+**Contact Us**
 
-  • Submitting the contact form with valid information
+- Submitting the contact form with valid information
 
-➎ Checkout Process
+**Checkout Process**
 
-  • Proceeding through the checkout flow with a registered user
+- Proceeding through the checkout flow with a registered user
 
-  • Verifying address information and confirming the order
-
-▶️ Tools & Tech Stack
+- Verifying address information and confirming the order
+  
+  
+## Tools & Tech Stack
 
 Language: Python
 
-  • Test Framework: Pytest
+  - Test Framework: Pytest
 
-  • Automation Tool: Selenium WebDriver
+  - Automation Tool: Selenium WebDriver
 
-  • Data Generation: Faker
+  - Data Generation: Faker
 
-  • Reporting: (Optional) Allure Report
+  - Reporting: (Optional) Allure Report
 
-▶️ Learning & Contribution
+## Learning & Contribution
 
 This project was built as part of a self-learning journey in automation testing. The test scenarios were originally created manually and then automated with guidance and improvement using AI assistance. 
 
 The goal was to:
 
-  • Practice writing clean and maintainable automation code
+  - Practice writing clean and maintainable automation code
 
-  • Understand testing concepts like element locating, flow control, and validations
+  - Understand testing concepts like element locating, flow control, and validations
 
-  • Build confidence in using Selenium and Pytest for real-world testing
+  - Build confidence in using Selenium and Pytest for real-world testing
 
 ▶️ How to Run the Tests
 ```bash
