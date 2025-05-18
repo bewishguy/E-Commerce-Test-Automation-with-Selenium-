@@ -73,18 +73,18 @@ The goal was to:
 
 ▶️ How to Run the Tests
 
-    1. Clone the repository:
-       git clone https://github.com/bewishguy/E-Commerce-Test-Automation-with-Selenium.git
-       cd E-Commerce-Test-Automation-with-Selenium
+  1. Clone the repository:
+       `git clone https://github.com/bewishguy/E-Commerce-Test-Automation-with-Selenium.git`
+       `cd E-Commerce-Test-Automation-with-Selenium`
        
-    3. Navigate into the project:
-      cd E-Commerce-Test-Automation-with-Selenium
+  3. Navigate into the project:
+      `cd E-Commerce-Test-Automation-with-Selenium`
     
-    4. Install dependencies:
-      pip install -r requirements.txt
+  4. Install dependencies:
+      `pip install -r requirements.txt`
     
-    5. Run tests:
-      pytest tests/
+  5. Run tests:
+      `pytest tests/`
 
 📄 License
 This project is for educational purposes and is open to further improvement and collaboration.
