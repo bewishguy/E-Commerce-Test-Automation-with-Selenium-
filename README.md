@@ -13,9 +13,6 @@ This project demonstrates end-to-end test automation of an e-commerce website us
   -  Clean code structure: separation of test data, page objects, and test scripts.
 
 ## Test Coverage
-
-- **Data-Driven Testing** using Faker to generate random, realistic test data.
-- **Page Object Model (POM)** used to organize test structure clearly and maintainably.
   
 This project covers key user flows of the e-commerce website, including:
 
@@ -52,13 +49,15 @@ This project covers key user flows of the e-commerce website, including:
 
 Language: Python
 
-  - Test Framework: Pytest
+  - **Test Framework:** Pytest
 
-  - Automation Tool: Selenium WebDriver
+  - **Automation Tool:** Selenium WebDriver
 
-  - Data Generation: Faker
+  - **Data Generation:** Faker
 
-  - Reporting: (Optional) Allure Report
+  - **Reporting:** (Optional) Allure Report
+  
+  - **Page Object Model (POM)** design pattern
 
 ## Learning & Contribution
 
@@ -73,19 +72,19 @@ The goal was to:
   - Build confidence in using Selenium and Pytest for real-world testing
 
 ▶️ How to Run the Tests
-```bash
-1. Clone the repository:
-   git clone https://github.com/bewishguy/E-Commerce-Test-Automation-with-Selenium.git
-   cd E-Commerce-Test-Automation-with-Selenium
-   
-3. Navigate into the project:
-  cd E-Commerce-Test-Automation-with-Selenium
 
-4. Install dependencies:
-  pip install -r requirements.txt
-
-5. Run tests:
-  pytest tests/
+    1. Clone the repository:
+       git clone https://github.com/bewishguy/E-Commerce-Test-Automation-with-Selenium.git
+       cd E-Commerce-Test-Automation-with-Selenium
+       
+    3. Navigate into the project:
+      cd E-Commerce-Test-Automation-with-Selenium
+    
+    4. Install dependencies:
+      pip install -r requirements.txt
+    
+    5. Run tests:
+      pytest tests/
 
 📄 License
 This project is for educational purposes and is open to further improvement and collaboration.
